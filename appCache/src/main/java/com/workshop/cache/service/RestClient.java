@@ -3,14 +3,12 @@ package com.workshop.cache.service;
 import com.workshop.cache.model.User;
 import com.workshop.cache.service.client.ServicesClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Component
 @RestController
 public class RestClient {
 
@@ -19,7 +17,6 @@ public class RestClient {
 
     @RequestMapping("/getUsersList")
     public List<User> getUsersList() {
-
         return servicesClient.callListUserService();
     }
 
