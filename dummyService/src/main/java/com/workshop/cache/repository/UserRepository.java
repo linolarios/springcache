@@ -14,7 +14,7 @@ import java.util.List;
 public class UserRepository {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserRepository.class);
 
-    @Value("${selectAllUsers.select}")
+    @Value("${query.select}")
     private String selectAllUsers;
 
     @Autowired

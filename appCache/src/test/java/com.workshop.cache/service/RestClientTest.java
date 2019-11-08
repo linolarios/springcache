@@ -18,7 +18,7 @@ public class RestClientTest {
 
     @Test
     public void testCacheWhenNeverExpires() {
-        assertEquals(3, restClient.getUsersList().size());
+        assertEquals(2, restClient.getUsersList().size());
     }
 
     @Test
