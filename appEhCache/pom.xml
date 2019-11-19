@@ -7,7 +7,7 @@
     <artifactId>SpringBootAppEhCache</artifactId>
     <version>0.1.0</version>
 
-    <name>SpringBootAppCache</name>
+    <name>SpringBootAppEHCache</name>
     <description>Spring Boot + Cache</description>
 
     <parent>

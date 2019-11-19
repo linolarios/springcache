@@ -32,13 +32,10 @@ public class CachingConfig {
         CacheManager cacheManager = provider.getCacheManager();
 
         MutableConfiguration cacheConfiguration = new MutableConfiguration()
-                .setTypes(Object.class, Object.class)
-                .setStoreByValue(false)
                 .addCacheEntryListenerConfiguration(cacheEntryListener())
-                .setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.SECONDS, 30)));
+                .setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.SECONDS, 2)));
 
         cacheManager.createCache("code", cacheConfiguration);
-
 
         return cacheManager;
     }
