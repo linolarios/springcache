@@ -21,7 +21,7 @@ public class UserRepository {
     private JdbcTemplate jdbcTemplate;
 
     public List<User> getUsers() {
-        LOGGER.info("**** Querying DB ****");
+        LOGGER.info("**** Querying DB for users ****");
 
         return jdbcTemplate.query(
                 selectAllUsers,
@@ -32,5 +32,15 @@ public class UserRepository {
                                 rs.getString("email")
                         )
         );
+    }
+
+    public void saveUser(User newUser) {
+        LOGGER.info("**** Save new user ****");
+
+    }
+
+    public User findUser(String name) {
+        LOGGER.info("**** finding user ****");
+        return null;
     }
 }
