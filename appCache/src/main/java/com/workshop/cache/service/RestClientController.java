@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class RestClient {
+public class RestClientController {
 
     @Autowired
     ServicesClient servicesClient;
@@ -21,7 +21,7 @@ public class RestClient {
     }
 
     @RequestMapping("/getCode")
-    public String getCodeWithName(@RequestParam(name = "name", required = false) String name) {
+    public String getCodeWithName(@RequestParam(name = "name", required = false, defaultValue="test") String name) {
         return servicesClient.callGetCodeService(name);
     }
 

@@ -21,7 +21,7 @@ public class ServiceMockController {
 
     @RequestMapping("/getCode")
     public String getThirdPartyService(@RequestParam(name = "name", required = false) String name) {
-        LOGGER.info("Getting Code");
+        LOGGER.info("Getting Code:" + name);
 
         return "code: ABCDE " + name;
     }

@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 public class RestClientTest {
 
     @Autowired
-    RestClient restClient;
+    RestClientController restClient;
 
     @Test
     public void testCacheWhenNeverExpires() {
@@ -28,7 +28,7 @@ public class RestClientTest {
 
     @Test
     public void testGetCode() {
-        assertEquals("code: ABCDE null", restClient.getCodeWithName(null));
+        assertEquals("code: ABCDE Test", restClient.getCodeWithName("Test"));
     }
 
 
