@@ -13,7 +13,6 @@ import javax.cache.Caching;
 import javax.cache.configuration.FactoryBuilder;
 import javax.cache.configuration.MutableCacheEntryListenerConfiguration;
 import javax.cache.configuration.MutableConfiguration;
-import javax.cache.spi.CachingProvider;
 import java.util.Iterator;
 
 @RestController
@@ -23,8 +22,7 @@ public class ProcessorController {
 
     @RequestMapping("/cacheProcessor")
     public void modifyValues() {
-        CachingProvider cachingProvider = Caching.getCachingProvider();
-        CacheManager cacheManager = cachingProvider.getCacheManager();
+        CacheManager cacheManager = Caching.getCachingProvider().getCacheManager();
 
         MutableConfiguration mutableConfiguration = new MutableConfiguration();
         mutableConfiguration.setTypes(String.class, String.class) //
@@ -53,7 +51,7 @@ public class ProcessorController {
             LOG.info(entry.getKey() + ":" + entry.getValue());
         }
 
-        cachingProvider.close();
+        Caching.getCachingProvider().close();
     }
 
 
