@@ -8,11 +8,11 @@ import javax.cache.event.*;
 import java.util.Iterator;
 
 @Component
-public class CacheLogger implements CacheEntryCreatedListener,
+public class CacheListener implements CacheEntryCreatedListener,
         CacheEntryUpdatedListener, CacheEntryExpiredListener,
         CacheEntryRemovedListener {
 
-    private final Logger LOG = LoggerFactory.getLogger(CacheLogger.class);
+    private final Logger LOG = LoggerFactory.getLogger(CacheListener.class);
 
     @Override
     public void onCreated(Iterable iterable) throws CacheEntryListenerException {
@@ -20,7 +20,7 @@ public class CacheLogger implements CacheEntryCreatedListener,
         final Iterator iterator = iterable.iterator();
         for (; iterator.hasNext(); ) {
             CacheEntryEvent cacheEntryEvent = (CacheEntryEvent) iterator.next();
-            LOG.info("Key: {} | EventType: {}  | Value: {}",
+            LOG.info("Key: {} | EventType: {}  | Value: {} |",
                     cacheEntryEvent.getKey(), cacheEntryEvent.getEventType(),
                     cacheEntryEvent.getValue());
         }

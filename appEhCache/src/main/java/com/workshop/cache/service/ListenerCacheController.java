@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RestClientController {
+public class ListenerCacheController {
 
-    private final Logger LOG = LoggerFactory.getLogger(RestClientController.class);
+    private final Logger LOG = LoggerFactory.getLogger(ListenerCacheController.class);
 
     @Autowired
     ServicesClient servicesClient;
 
     @RequestMapping("/testLogger")
-    public void getCodeWithName(@RequestParam(name = "id", required = true) int id) {
+    public void triggerCacheEvents(@RequestParam(name = "id", required = true) int id) {
         LOG.info("Saving first object");
         servicesClient.saveNewUser(id, new User(id));
         LOG.info(print(servicesClient.getUser(id)));

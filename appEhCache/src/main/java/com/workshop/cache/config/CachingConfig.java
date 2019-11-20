@@ -1,6 +1,6 @@
 package com.workshop.cache.config;
 
-import com.workshop.cache.listener.CacheLogger;
+import com.workshop.cache.listener.CacheListener;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.jcache.JCacheCacheManager;
 import org.springframework.context.annotation.Bean;
@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.cache.CacheManager;
 import javax.cache.Caching;
-import javax.cache.configuration.CacheEntryListenerConfiguration;
 import javax.cache.configuration.FactoryBuilder;
 import javax.cache.configuration.MutableCacheEntryListenerConfiguration;
 import javax.cache.configuration.MutableConfiguration;
@@ -26,7 +25,7 @@ public class CachingConfig {
         return new JCacheCacheManager(cacheManager());
     }
 
-    @Bean(destroyMethod = "close")
+    @Bean
     CacheManager cacheManager() {
         CachingProvider provider = Caching.getCachingProvider();
         CacheManager cacheManager = provider.getCacheManager();
@@ -43,7 +42,7 @@ public class CachingConfig {
     @Bean
     public MutableCacheEntryListenerConfiguration cacheEntryListener() {
         return new MutableCacheEntryListenerConfiguration(
-                FactoryBuilder.factoryOf(CacheLogger.class), null, false, true);
+                FactoryBuilder.factoryOf(CacheListener.class), null, false, true);
     }
 
 

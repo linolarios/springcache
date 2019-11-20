@@ -12,6 +12,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 public class RestClientTest {
 
     @Autowired
-    RestClientController restClient;
+    ListenerCacheController restClient;
 
 }

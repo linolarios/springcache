@@ -1,6 +1,6 @@
 package com.workshop.cache.service;
 
-import com.workshop.cache.listener.CacheLogger;
+import com.workshop.cache.listener.CacheListener;
 import com.workshop.cache.processor.CustomEntryProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ public class ProcessorController {
         MutableConfiguration mutableConfiguration = new MutableConfiguration();
         mutableConfiguration.setTypes(String.class, String.class) //
                 .addCacheEntryListenerConfiguration(new MutableCacheEntryListenerConfiguration( //
-                        FactoryBuilder.factoryOf(CacheLogger.class), null, false, true));
+                        FactoryBuilder.factoryOf(CacheListener.class), null, false, true));
 
         Cache cache = cacheManager.createCache("cache1", mutableConfiguration);
         cache.put("key1", "value1");
@@ -51,7 +51,7 @@ public class ProcessorController {
             LOG.info(entry.getKey() + ":" + entry.getValue());
         }
 
-        Caching.getCachingProvider().close();
+        Caching.getCachingProvider().getCacheManager().getCache("cache1").close();
     }
 
 
