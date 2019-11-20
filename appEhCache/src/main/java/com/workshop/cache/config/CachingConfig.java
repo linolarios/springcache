@@ -33,9 +33,9 @@ public class CachingConfig {
 
         MutableConfiguration cacheConfiguration = new MutableConfiguration()
                 .addCacheEntryListenerConfiguration(cacheEntryListener())
-                .setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.SECONDS, 2)));
+                .setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.SECONDS, 30)));
 
-        cacheManager.createCache("code", cacheConfiguration);
+        cacheManager.createCache("user", cacheConfiguration);
 
         return cacheManager;
     }

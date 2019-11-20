@@ -3,6 +3,7 @@ package com.workshop.cache.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
+import java.util.concurrent.ThreadLocalRandom;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User implements Serializable {
@@ -10,8 +11,13 @@ public class User implements Serializable {
     private int id;
     private String name;
     private String email;
+    private String status;
 
     public User() {
+    }
+
+    public User(int id) {
+        this.id = id;
     }
 
     public User(int id, String name, String email) {
@@ -42,5 +48,26 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void updateStatus() {
+        setStatus("Cached " + ThreadLocalRandom.current().nextLong(1, 10000));
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }
