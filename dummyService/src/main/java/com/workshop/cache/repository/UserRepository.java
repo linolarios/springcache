@@ -1,5 +1,6 @@
 package com.workshop.cache.repository;
 
+import com.workshop.cache.builder.UserBuilder;
 import com.workshop.cache.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +33,18 @@ public class UserRepository {
                                 rs.getString("email")
                         )
         );
+    }
+
+    private User getNewUser(int id, String name, String email) {
+        return new UserBuilder()
+                .with( //
+                        $ -> {
+                            $.id = id;
+                            $.name = name;
+                            $.email = email;
+                        }) //
+                .with($ -> $.isActive = true) //
+                .createUser();
     }
 
     public void saveUser(User newUser) {
